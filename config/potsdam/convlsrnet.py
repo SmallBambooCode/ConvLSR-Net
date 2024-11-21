@@ -18,15 +18,15 @@ num_classes = len(CLASSES)
 classes = CLASSES
 
 weights_name = "0226-convlsrnet-head88-down2-crop768"
-weights_path = "/home/zrh/datasets/semantic/potsdam/log_potsdam/{}".format(weights_name)
+weights_path = "/mnt/workspace/weights/potsdam/log_potsdam/{}".format(weights_name)
 test_weights_name = weights_name
-log_name = "/home/zrh/datasets/semantic/potsdam/log_potsdam/{}".format(weights_name)
+log_name = "/mnt/workspace/weights/potsdam/log_potsdam/{}".format(weights_name)
 monitor = 'val_F1'
 monitor_mode = 'max'
 save_top_k = 2
 save_last = False
 check_val_every_n_epoch = 1
-gpus = [0,1]
+gpus = [0]
 strategy = "dp"
 pretrained_ckpt_path = None
 resume_ckpt_path = None
@@ -42,12 +42,12 @@ loss = JointLoss(SoftCrossEntropyLoss(smooth_factor=0.05, ignore_index=ignore_in
 use_aux_loss = False
 
 # define the dataloader
-train_dataset = PotsdamDataset(data_root='/home/zrh/datasets/semantic/potsdam/1024/train', mode='train',
+train_dataset = PotsdamDataset(data_root='/mnt/workspace/ConvLSR-Net/data/potsdam/train', mode='train',
                                mosaic_ratio=0.25, transform=train_aug)
 
-val_dataset = PotsdamDataset(data_root='/home/zrh/datasets/semantic/potsdam/1024/test1024',
+val_dataset = PotsdamDataset(data_root='/mnt/workspace/ConvLSR-Net/data/potsdam/val',
                               transform=val_aug)
-test_dataset = PotsdamDataset(data_root='/home/zrh/datasets/semantic/potsdam/1024/test1024',
+test_dataset = PotsdamDataset(data_root='/mnt/workspace/ConvLSR-Net/data/potsdam/test',
                               transform=val_aug)
 
 train_loader = DataLoader(dataset=train_dataset,
