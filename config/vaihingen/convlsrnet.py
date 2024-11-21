@@ -7,8 +7,8 @@ from catalyst import utils
 # training hparam
 max_epoch = 105
 ignore_index = len(CLASSES)
-train_batch_size = 16
-val_batch_size = 8
+train_batch_size = 8
+val_batch_size = 4
 lr = 6e-4
 weight_decay = 2.5e-4
 backbone_lr = 6e-5
@@ -18,15 +18,15 @@ num_classes = len(CLASSES)
 classes = CLASSES
 
 weights_name = "0226-convlsrnet-head88-bz8-down2"
-weights_path = "/home/zrh/datasets/semantic/vaihingen/log_geoseg/{}".format(weights_name)
+weights_path = "/mnt/workspace/weights/vaihingen/log_geoseg/{}".format(weights_name)
 test_weights_name = weights_name
-log_name = "/home/zrh/datasets/semantic/vaihingen/log_geoseg/{}".format(weights_name)
+log_name = "/mnt/workspace/weights/vaihingen/log_geoseg/{}".format(weights_name)
 monitor = 'val_F1'
 monitor_mode = 'max'
 save_top_k = 1
 save_last = False
 check_val_every_n_epoch = 1
-gpus = [0,1]
+gpus = [0]
 strategy = "dp"
 pretrained_ckpt_path = None
 resume_ckpt_path = None
@@ -41,11 +41,11 @@ loss = JointLoss(SoftCrossEntropyLoss(smooth_factor=0.05, ignore_index=ignore_in
 use_aux_loss = False
 
 # define the dataloader
-train_dataset = VaihingenDataset(data_root="/home/zrh/datasets/semantic/vaihingen/1024_geoseg/train", mode='train',
+train_dataset = VaihingenDataset(data_root="/mnt/workspace/ConvLSR-Net/data/vaihingen/1024_geoseg/train", mode='train',
                                  mosaic_ratio=0.25, transform=train_aug)
 
-val_dataset = VaihingenDataset(data_root="/home/zrh/datasets/semantic/vaihingen/1024_geoseg/test",transform=val_aug)
-test_dataset = VaihingenDataset(data_root="/home/zrh/datasets/semantic/vaihingen/1024_geoseg/test",
+val_dataset = VaihingenDataset(data_root="/mnt/workspace/ConvLSR-Net/data/vaihingen/1024_geoseg/test",transform=val_aug)
+test_dataset = VaihingenDataset(data_root="/mnt/workspace/ConvLSR-Net/data/vaihingen/1024_geoseg/test",
                                 transform=val_aug)
 
 train_loader = DataLoader(dataset=train_dataset,
