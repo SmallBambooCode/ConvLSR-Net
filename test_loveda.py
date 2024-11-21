@@ -13,6 +13,7 @@ from torch import nn
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
+from datetime import datetime
 
 def label2rgb(mask):
     h, w = mask.shape[0], mask.shape[1]
@@ -120,19 +121,28 @@ def main():
                     results.append((mask, str(args.output_path / mask_type / mask_name), args.rgb))
                 else:
                     results.append((mask, str(args.output_path / mask_name), args.rgb))
-    if args.val:
-        iou_per_class = evaluator.Intersection_over_Union()
-        f1_per_class = evaluator.F1()
-        OA = evaluator.OA()
-        for class_name, class_iou, class_f1 in zip(config.classes, iou_per_class, f1_per_class):
-            print('F1_{}:{}, IOU_{}:{}'.format(class_name, class_f1, class_name, class_iou))
-        print('F1:{}, mIOU:{}, OA:{}'.format(np.nanmean(f1_per_class), np.nanmean(iou_per_class), OA))
-
-    t0 = time.time()
-    mpp.Pool(processes=mp.cpu_count()).map(img_writer, results)
-    t1 = time.time()
-    img_write_time = t1 - t0
-    print('images writing spends: {} s'.format(img_write_time))
+    # 创建日志文件夹
+    log_dir = Path('./test_loveda_log')
+    log_dir.mkdir(exist_ok=True)
+    # 创建日志文件名
+    log_filename = log_dir / (datetime.now().strftime("%Y-%m-%d_%H-%M-%S") + '.txt')
+    # 打开日志文件
+    with open(log_filename, 'w') as log_file:
+        if args.val:
+            iou_per_class = evaluator.Intersection_over_Union()
+            f1_per_class = evaluator.F1()
+            OA = evaluator.OA()
+            for class_name, class_iou, class_f1 in zip(config.classes, iou_per_class, f1_per_class):
+                print('F1_{}:{}, IOU_{}:{}'.format(class_name, class_f1, class_name, class_iou))
+            print('F1:{}, mIOU:{}, OA:{}'.format(np.nanmean(f1_per_class), np.nanmean(iou_per_class), OA))
+            log_file.write('F1:{}, mIOU:{}, OA:{}'.format(np.nanmean(f1_per_class), np.nanmean(iou_per_class), OA) + '\n')
+    
+        t0 = time.time()
+        mpp.Pool(processes=mp.cpu_count()).map(img_writer, results)
+        t1 = time.time()
+        img_write_time = t1 - t0
+        print('images writing spends: {} s'.format(img_write_time))
+        log_file.write('images writing spends: {} s'.format(img_write_time) + '\n')
 
 
 if __name__ == "__main__":
