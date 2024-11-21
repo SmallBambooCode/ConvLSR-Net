@@ -44,7 +44,7 @@ python train_supervision_dp.py -c ./config/potsdam/convlsrnet.py
 ```
 
 ```shell
-python train_supervision_dp.py -c ./config/vahingen/convlsrnet.py
+python train_supervision_dp.py -c ./config/vaihingen/convlsrnet.py
 ```
 
 ```shell
@@ -55,17 +55,17 @@ python train_supervision_dp.py -c ./config/loveda/convlsrnet.py
 
 **iSAID** 
 ```shell
-python test_isaid.py -c ./config/isaid/convlsrnet.py -o ~/fig_results/isaid/convlsrnet_isaid/  -t "d4"
+python test_isaid.py -c ./config/isaid/convlsrnet.py -o ./fig_results/isaid/convlsrnet_isaid/  -t "d4"
 ```
 
 **Vaihingen**
 ```shell
-python test_vaihingen.py -c ./config/vaihingen/convlsrnet.py -o ~/fig_results/convlsrnet_vaihingen/ --rgb -t "d4"
+python test_vaihingen.py -c ./config/vaihingen/convlsrnet.py -o ./fig_results/convlsrnet_vaihingen/ --rgb -t "d4"
 ```
 
 **Potsdam**
 ```shell
-python test_potsdam.py -c ./config/potsdam/convlsrnet.py -o ~/fig_results/convlsrnet_potsdam/ --rgb -t "d4"
+python test_potsdam.py -c ./config/potsdam/convlsrnet.py -o ./fig_results/convlsrnet_potsdam/ --rgb -t "d4"
 ```
 
 **LoveDA** ([Online Testing](https://codalab.lisn.upsaclay.fr/competitions/421))
@@ -73,7 +73,12 @@ python test_potsdam.py -c ./config/potsdam/convlsrnet.py -o ~/fig_results/convls
 My LoveDA results: [LoveDA Test Results](https://codalab.lisn.upsaclay.fr/my/competition/submission/340641/detailed_results/)
 
 ```shell
-python test_loveda.py -c ./config/loveda/convlsrnet.py -o ~/fig_results/convlsrnet_loveda --rgb -t "d4"
+# 输出RGB图像（线下测试，直接输出mIOU）
+python test_loveda.py -c ./config/loveda/convlsrnet.py -o ./fig_results/convlsrnet_loveda_rgb --rgb --val -t "d4"
+```
+```shell
+# 输出标签图像（在线测试）
+python test_loveda.py -c ./config/loveda/convlsrnet.py -o ./fig_results/convlsrnet_loveda_onlinetest -t "d4"
 ```
 
 
