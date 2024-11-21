@@ -18,15 +18,15 @@ num_classes = len(CLASSES)
 classes = CLASSES
 
 weights_name = "0227-convlsrnet-train+val-last-epoch30"
-weights_path = "/home/zrh/datasets/semantic/loveda/log_loveda/{}".format(weights_name)
+weights_path = "/mnt/workspace/weights/loveda/log_loveda/{}".format(weights_name)
 test_weights_name =  weights_name
-log_name = "/home/zrh/datasets/semantic/loveda/log_loveda/{}".format(weights_name)
+log_name = "/mnt/workspace/weights/loveda/log_loveda/{}".format(weights_name)
 monitor = 'val_mIoU'
 monitor_mode = 'max'
 save_top_k = 1
 save_last = True
 check_val_every_n_epoch = 1
-gpus = [0,1]
+gpus = [0]
 strategy = "dp"
 pretrained_ckpt_path = None
 resume_ckpt_path = None
@@ -61,7 +61,7 @@ def train_aug(img, mask):
     return img, mask
 
 
-train_dataset = LoveDATrainDataset(transform=train_aug, data_root='/home/zrh/datasets/semantic/loveda/train_val')
+train_dataset = LoveDATrainDataset(transform=train_aug, data_root='/mnt/workspace/ConvLSR-Net/data/LoveDA/train_val')
 
 val_dataset = loveda_val_dataset
 
