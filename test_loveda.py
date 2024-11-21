@@ -134,6 +134,7 @@ def main():
             OA = evaluator.OA()
             for class_name, class_iou, class_f1 in zip(config.classes, iou_per_class, f1_per_class):
                 print('F1_{}:{}, IOU_{}:{}'.format(class_name, class_f1, class_name, class_iou))
+                log_file.write('F1_{}:{}, IOU_{}:{}'.format(class_name, class_f1, class_name, class_iou) + '\n')
             print('F1:{}, mIOU:{}, OA:{}'.format(np.nanmean(f1_per_class), np.nanmean(iou_per_class), OA))
             log_file.write('F1:{}, mIOU:{}, OA:{}'.format(np.nanmean(f1_per_class), np.nanmean(iou_per_class), OA) + '\n')
     
