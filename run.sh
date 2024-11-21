@@ -25,31 +25,37 @@ case $choice in
   1)
     echo "选择了Training - iSAID"
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
+    config=${config:-convlsrnet.py}
     config_path="./config/isaid/$config"
     cmd="python train_supervision.py -c $config_path"
     ;;
   2)
     echo "选择了Training - Potsdam"
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
+    config=${config:-convlsrnet.py}
     config_path="./config/potsdam/$config"
     cmd="python train_supervision_dp.py -c $config_path"
     ;;
   3)
     echo "选择了Training - Vaihingen"
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
+    config=${config:-convlsrnet.py}
     config_path="./config/vaihingen/$config"
     cmd="python train_supervision_dp.py -c $config_path"
     ;;
   4)
     echo "选择了Training - LoveDA"
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
+    config=${config:-convlsrnet.py}
     config_path="./config/loveda/$config"
     cmd="python train_supervision_dp.py -c $config_path"
     ;;
   5)
     echo "选择了Testing - iSAID"
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
+    config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_isaid): " output
+    output=${config:-convlsrnet_isaid}
     config_path="./config/isaid/$config"
     output_path="./fig_results/isaid/$output/"
     additional_args='-t "d4"'
@@ -58,7 +64,9 @@ case $choice in
   6)
     echo "选择了Testing - Vaihingen"
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
+    config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_vaihingen): " output
+    output=${config:-convlsrnet_vaihingen}
     config_path="./config/vaihingen/$config"
     output_path="./fig_results/$output/"
     additional_args='--rgb -t "d4"'
@@ -67,7 +75,9 @@ case $choice in
   7)
     echo "选择了Testing - Potsdam"
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
+    config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_potsdam): " output
+    output=${config:-convlsrnet_potsdam}
     config_path="./config/potsdam/$config"
     output_path="./fig_results/$output/"
     additional_args='--rgb -t "d4"'
@@ -76,7 +86,9 @@ case $choice in
   8)
     echo "选择了Testing - LoveDA (输出RGB图像)"
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
+    config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_loveda_rgb): " output
+    output=${config:-convlsrnet_loveda_rgb}
     config_path="./config/loveda/$config"
     output_path="./fig_results/$output"
     additional_args='--rgb --val -t "d4"'
@@ -85,7 +97,9 @@ case $choice in
   9)
     echo "选择了Testing - LoveDA (输出标签图像)"
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
+    config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_loveda_onlinetest): " output
+    output=${config:-convlsrnet_loveda_onlinetest}
     config_path="./config/loveda/$config"
     output_path="./fig_results/$output"
     additional_args='-t "d4"'
