@@ -1,3 +1,8 @@
+# SmallBambooCode 修改版 为了更加方便的训练&测试
+- 增加了测试日志保存
+- 修改了部分数据集文件的默认地址
+- 增加shell脚本以更方便的训练&测试模型
+
 ## ConvLSR-Net
 This is the code for our paper:
 
