@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# 进入ConvLSR-Net文件夹
-cd ConvLSR-Net || { echo "无法进入ConvLSR-Net文件夹，请检查路径。"; exit 1; }
-
 # 打印菜单供用户选择
 echo "请选择要运行的操作："
 echo "1. Training - iSAID"
