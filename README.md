@@ -71,6 +71,7 @@ python test_potsdam.py -c ./config/potsdam/convlsrnet.py -o ./fig_results/convls
 **LoveDA** ([Online Testing](https://codalab.lisn.upsaclay.fr/competitions/421))
 
 My LoveDA results: [LoveDA Test Results](https://codalab.lisn.upsaclay.fr/my/competition/submission/340641/detailed_results/)
+
 输出RGB图像（线下测试，直接输出mIOU）
 ```shell
 python test_loveda.py -c ./config/loveda/convlsrnet.py -o ./fig_results/convlsrnet_loveda_rgb --rgb --val -t "d4"
