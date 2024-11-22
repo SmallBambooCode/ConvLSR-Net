@@ -119,7 +119,7 @@ def main():
                 mask_name = image_ids[i]
                 results.append((mask, str(args.output_path / mask_name), args.rgb))
     # 创建日志文件夹
-    log_dir = Path('./test_log/test_potsdam_log')
+    log_dir = Path(f'./test_log/test_potsdam_log/{config.test_weights_name}')
     log_dir.mkdir(parents=True, exist_ok=True)
     # 创建日志文件名
     log_filename = log_dir / (datetime.now().strftime("%Y-%m-%d_%H-%M-%S") + '.txt')
