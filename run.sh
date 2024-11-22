@@ -55,7 +55,7 @@ case $choice in
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
     config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_isaid): " output
-    output=${config:-convlsrnet_isaid}
+    output=${output:-convlsrnet_isaid}
     config_path="./config/isaid/$config"
     output_path="./fig_results/isaid/$output/"
     additional_args='-t "d4"'
@@ -66,7 +66,7 @@ case $choice in
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
     config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_vaihingen): " output
-    output=${config:-convlsrnet_vaihingen}
+    output=${output:-convlsrnet_vaihingen}
     config_path="./config/vaihingen/$config"
     output_path="./fig_results/$output/"
     additional_args='--rgb -t "d4"'
@@ -77,7 +77,7 @@ case $choice in
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
     config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_potsdam): " output
-    output=${config:-convlsrnet_potsdam}
+    output=${output:-convlsrnet_potsdam}
     config_path="./config/potsdam/$config"
     output_path="./fig_results/$output/"
     additional_args='--rgb -t "d4"'
@@ -88,7 +88,7 @@ case $choice in
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
     config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_loveda_rgb): " output
-    output=${config:-convlsrnet_loveda_rgb}
+    output=${output:-convlsrnet_loveda_rgb}
     config_path="./config/loveda/$config"
     output_path="./fig_results/$output"
     additional_args='--rgb --val -t "d4"'
@@ -99,7 +99,7 @@ case $choice in
     read -rp "请输入配置文件名 (如：convlsrnet.py): " config
     config=${config:-convlsrnet.py}
     read -rp "请输入输出目录名 (如：convlsrnet_loveda_onlinetest): " output
-    output=${config:-convlsrnet_loveda_onlinetest}
+    output=${output:-convlsrnet_loveda_onlinetest}
     config_path="./config/loveda/$config"
     output_path="./fig_results/$output"
     additional_args='-t "d4"'
