@@ -118,7 +118,7 @@ def main():
 
     # 创建日志文件夹
     log_dir = Path('./test_log/test_vaihingen_log')
-    log_dir.mkdir(exist_ok=True)
+    log_dir.mkdir(parents=True, exist_ok=True)
     # 创建日志文件名
     log_filename = log_dir / (datetime.now().strftime("%Y-%m-%d_%H-%M-%S") + '.txt')
     # 打开日志文件
