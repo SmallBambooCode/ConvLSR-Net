@@ -44,7 +44,7 @@ class MultiScaleConvMlp(nn.Module):
         self.dwconv = InceptionDWConv2d(
             in_channels=in_features,
             square_kernel_size=3,   # 模拟 3x3 卷积分支
-            band_kernel_size=13,    # 测试bks13
+            band_kernel_size=9,     # 测试bks9
             branch_ratio=0.25       # 保持通道数分配一致
         )
 
