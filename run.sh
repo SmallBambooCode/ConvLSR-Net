@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# 打印菜单供用户选择
 echo "请选择要运行的操作："
 echo "1. Training - iSAID"
 echo "2. Training - Potsdam"
@@ -114,3 +113,16 @@ esac
 # 执行命令
 echo "运行命令: $cmd"
 eval "$cmd"
+
+# 钉钉通知
+webhook='https://oapi.dingtalk.com/robot/send?access_token=填入自己的Token'
+text="命令已执行完毕！执行命令：$cmd"
+
+# 发送钉钉通知
+curl $webhook -H 'Content-Type: application/json' -d "
+{
+    'msgtype': 'text',
+    'text': {
+        'content': '$text',
+    }
+}"
